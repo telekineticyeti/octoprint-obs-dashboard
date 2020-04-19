@@ -17,5 +17,5 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [] :
  */
 export const selectPrinter = (state: State) => state.printer;
 export const PrinterSelectors = {
-  status: createSelector(selectPrinter, (state: PrinterState) => state.status),
+  status: createSelector(selectPrinter, (state: PrinterState) => state.printing),
 };

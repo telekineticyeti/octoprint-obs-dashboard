@@ -1,20 +1,47 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import * as PrinterActions from './printer.actions';
+import {PrinterActions} from '.';
 
 export interface PrinterState {
-  status: string;
+  printing: boolean;
+  bed: {
+    actualTemp: number;
+    targetTemp: number;
+  };
+  extruder: {
+    actualTemp: number;
+    targetTemp: number;
+  };
 }
 
 const initialState: PrinterState = {
-  status: '',
+  printing: false,
+  bed: {
+    actualTemp: 0,
+    targetTemp: 0,
+  },
+  extruder: {
+    actualTemp: 0,
+    targetTemp: 0,
+  },
 };
 
 const printerReducer = createReducer(
   initialState,
-  on(PrinterActions.getStatusSuccess, (state, {payload}) => ({
-    ...state,
-    status: payload,
-  })),
+  on(PrinterActions.getStatusSuccess, (state, {status}) => {
+    console.log(status);
+    return {
+      ...state,
+      printing: status.flags.printing,
+      bed: {
+        actualTemp: status.bed.actual,
+        targetTemp: status.bed.target,
+      },
+      // extruder: {
+      //   actualTemp: status.tools.,
+      //   targetTemp: 0,
+      // },
+    };
+  }),
   on(PrinterActions.getStatusFailure, state => ({...state}))
 );
 
