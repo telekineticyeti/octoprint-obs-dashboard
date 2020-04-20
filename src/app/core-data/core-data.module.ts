@@ -5,6 +5,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {environment} from '../../environments/environment';
 import {reducers, metaReducers} from './reducers';
 import {PrinterEffects} from './printer/printer.effects';
+import {JobEffects} from './job/job.effects';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import {PrinterEffects} from './printer/printer.effects';
         strictActionImmutability: true,
       },
     }),
-    EffectsModule.forRoot([PrinterEffects]),
+    EffectsModule.forRoot([PrinterEffects, JobEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
 })

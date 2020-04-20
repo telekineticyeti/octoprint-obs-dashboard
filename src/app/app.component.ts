@@ -10,6 +10,10 @@ export class AppComponent implements OnInit {
   constructor(public printService: OctoprintApiService) {}
 
   public ngOnInit(): void {
-    this.printService.getStatus();
+    this.printService.startPolling();
+
+    // setTimeout(() => {
+    //   this.printService.stopPolling();
+    // }, 2000);
   }
 }

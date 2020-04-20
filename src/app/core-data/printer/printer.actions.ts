@@ -7,3 +7,5 @@ export const getStatusSuccess = createAction(
   props<{status: IPrinterStatus}>()
 );
 export const getStatusFailure = createAction('[Printer] get status fail', props<Error>());
+export const startPolling = createAction('[Printer] Start Polling for Status');
+export const stopPolling = createAction('[Printer] Stop Polling for Status');

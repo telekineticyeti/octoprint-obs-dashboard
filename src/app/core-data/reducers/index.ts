@@ -1,13 +1,16 @@
 import {ActionReducerMap, MetaReducer, createSelector} from '@ngrx/store';
 import {environment} from '../../../environments/environment';
 import {PrinterState, PrinterReducer} from '../printer/printer.reducer';
+import {JobState, JobReducer} from '../job/job.reducer';
 
 export interface State {
   printer: PrinterState;
+  job: JobState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   printer: PrinterReducer,
+  job: JobReducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
@@ -17,5 +20,10 @@ export const metaReducers: MetaReducer<State>[] = !environment.production ? [] :
  */
 export const selectPrinter = (state: State) => state.printer;
 export const PrinterSelectors = {
-  status: createSelector(selectPrinter, (state: PrinterState) => state.printing),
+  printer: createSelector(selectPrinter, (state: PrinterState) => state),
+};
+
+export const selectJob = (state: State) => state.job;
+export const JobSelectors = {
+  job: createSelector(selectJob, (state: JobState) => state),
 };
