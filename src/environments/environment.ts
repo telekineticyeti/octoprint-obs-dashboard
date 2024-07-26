@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  printerApiKey: '57CBAA6F78BC40928ABD88CDB8C8F2CE',
+  printerApiUrl: 'http://192.168.1.240',
 };
 
 /*

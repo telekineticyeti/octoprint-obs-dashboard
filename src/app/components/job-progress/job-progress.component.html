@@ -1,3 +1,6 @@
 <p>{{ octo.jobStatus$!.file.name }}</p>
-<p>Extruder {{ octo.printerStatus$!.extruder.actualTemp }}</p>
-<p>Bed {{ octo.printerStatus$!.bed.actualTemp }}</p>
+<p>
+  Extruder {{ octo.printerStatus$!.extruder.actualTemp }} /
+  {{ octo.printerStatus$!.extruder.targetTemp }}
+</p>
+<p>Bed {{ octo.printerStatus$!.bed.actualTemp }} / {{ octo.printerStatus$!.bed.targetTemp }}</p>
